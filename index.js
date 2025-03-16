@@ -200,12 +200,20 @@ const HTML = `
         
         const historyList = histories
   .filter(h => h.data)
-  .map(h => `
-    <div class="history-item" onclick="loadSession('${h.id.replace(/'/g, "\\'")}')">
-      <small>${new Date(parseInt(h.id.split('_')[2], 10)).toLocaleString()}</small>
-      <p>${h.data[0]?.content?.substring(0, 30) || '无内容'}...</p>
-    </div>
-  `).join('');
+  .map(h => {
+    const sessionId = h.id.replace(/'/g, "\\'");
+    const timestamp = parseInt(h.id.split('_')[2], 10);
+    const preview = h.data[0]?.content?.substring(0, 30) || '无内容';
+    
+    return [
+      '<div class="history-item" onclick="loadSession(\'', 
+      sessionId, 
+      '\')">',
+      '<small>', new Date(timestamp).toLocaleString(), '</small>',
+      '<p>', preview, '...</p>',
+      '</div>'
+    ].join('');
+  }).join('');
   
         document.getElementById('historyPanel').innerHTML = historyList
       } catch (error) {
