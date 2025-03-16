@@ -3,7 +3,7 @@ addEventListener('fetch', event => {
 })
 
 // 加密密钥（建议存储在环境变量）
-const ENCRYPTION_KEY = 'your-32-byte-encryption-key'; // 需替换为真实密钥
+const ENCRYPTION_KEY = 'c6aad780c6dae2674bd5e897e2a82027'; // 需替换为真实密钥
 
 async function handleRequest(request) {
   // 处理预检请求
