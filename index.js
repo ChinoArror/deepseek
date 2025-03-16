@@ -227,14 +227,22 @@ const HTML = `
         const histories = await response.json()
         const session = histories.find(h => h.id === sessionId)
         
-        if (session?.data) {
-          document.getElementById('chatBox').innerHTML = session.data
-            .map(msg => `
-              <div class="message ${msg.role === 'user' ? 'user-message' : 'bot-message'}">
-                <strong>${msg.role === 'user' ? '你' : 'AI'}:</strong>
-                <p>${msg.content}</p>
-              </div>
-            `).join('')
+        // 在loadSession函数中修改为：
+document.getElementById('chatBox').innerHTML = session.data
+  .map(msg => [
+    '<div class="message ', 
+    msg.role === 'user' ? 'user-message' : 'bot-message', 
+    '">',
+    '<strong>', 
+    msg.role === 'user' ? '你' : 'AI', 
+    ':</strong>',
+    '<p>', 
+    msg.content, 
+    '</p>',
+    '</div>'
+  ].join(''))
+  .join('');
+  
         }
       } catch (error) {
         console.error('加载会话失败:', error)
