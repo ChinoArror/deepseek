@@ -1,0 +1,14 @@
+name = "deepseek-chat-worker"
+main = "index.js"
+compatibility_date = "2024-03-01"
+
+[vars]
+DEEPSEEK_API_KEY = "your_api_key_here"  # 在Cloudflare Dashboard中设置
+ENCRYPTION_KEY = "your-32-byte-encryption-key" # 需替换为真实密钥
+
+[kv_namespaces]
+binding = "CHAT_HISTORY"
+id = "your_kv_namespace_id"  # 通过wrangler创建获取
+
+[build]
+upload.format = "service-worker"
