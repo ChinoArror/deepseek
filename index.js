@@ -199,14 +199,14 @@ const HTML = `
         const histories = await response.json()
         
         const historyList = histories
-          .filter(h => h.data)
-          .map(h => `
-            `<div class="history-item" onclick="loadSession(&#39;${h.id}&#39;)">`
-              <small>${new Date(parseInt(h.id.split('_')[2])).toLocaleString()}</small>
-              <p>${h.data[0]?.content?.substring(0, 30) || '无内容'}...</p>
-            </div>
-          `).join('')
-        
+  .filter(h => h.data)
+  .map(h => `
+    <div class="history-item" onclick="loadSession('${h.id.replace(/'/g, "\\'")}')">
+      <small>${new Date(parseInt(h.id.split('_')[2], 10)).toLocaleString()}</small>
+      <p>${h.data[0]?.content?.substring(0, 30) || '无内容'}...</p>
+    </div>
+  `).join('');
+  
         document.getElementById('historyPanel').innerHTML = historyList
       } catch (error) {
         console.error('加载历史失败:', error)
