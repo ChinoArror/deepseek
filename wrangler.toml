@@ -3,8 +3,8 @@ main = "index.js"
 compatibility_date = "2024-03-01"
 
 [vars]
-DEEPSEEK_API_KEY = "your_api_key_here"  # 在Cloudflare Dashboard中设置
-ENCRYPTION_KEY = "your-32-byte-encryption-key" # 需替换为真实密钥
+DEEPSEEK_API_KEY = "sk-a96fce2c05e14d78bd5195534b211385"  # 在Cloudflare Dashboard中设置
+ENCRYPTION_KEY = "c6aad780c6dae2674bd5e897e2a82027" # 需替换为真实密钥
 
 [kv_namespaces]
 binding = "CHAT_HISTORY"
