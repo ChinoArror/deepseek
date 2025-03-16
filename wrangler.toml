@@ -7,8 +7,9 @@ DEEPSEEK_API_KEY = "sk-a96fce2c05e14d78bd5195534b211385"  # 在Cloudflare Dashbo
 ENCRYPTION_KEY = "c6aad780c6dae2674bd5e897e2a82027" # 需替换为真实密钥
 
 [kv_namespaces]
-binding = "CHAT_HISTORY"
-id = "df1a3dbe11df4fc4a04d58648f0b7b9d"  # 通过wrangler创建获取
+kv_namespaces = [
+  { binding = "CHAT_HISTORY", id = "df1a3dbe11df4fc4a04d58648f0b7b9d" }
+]  # 通过wrangler创建获取
 
 [build]
-upload.format = "service-worker"
+
